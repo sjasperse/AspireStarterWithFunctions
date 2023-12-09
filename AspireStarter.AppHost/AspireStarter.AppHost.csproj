@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspireStarter.ApiService\AspireStarter.ApiService.csproj" />
+    <ProjectReference Include="..\AspireStarter.AppFunctions\AspireStarter.AppFunctions.csproj" />
     <ProjectReference Include="..\AspireStarter.Web\AspireStarter.Web.csproj" />
   </ItemGroup>
 

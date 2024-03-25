@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ namespace Microsoft.Extensions.Hosting;
 public static class Extensions
 {
     // added to support functions
-    public static IHostBuilder AddServiceDefaults(this IHostBuilder builder)
+    public static IHostBuilder AddServiceDefaultsForFunctionApp(this IHostBuilder builder)
     {
         // open telemetry
         builder.ConfigureLogging(x => {
@@ -27,22 +28,22 @@ public static class Extensions
             services.AddOpenTelemetry()
                 .WithMetrics(metrics =>
                 {
-                    metrics.AddRuntimeInstrumentation()
+                    metrics
+                        .AddRuntimeInstrumentation()
                         .AddBuiltInMeters();
                 })
                 .WithTracing(tracing =>
                 {
-                    if (context.HostingEnvironment.IsDevelopment())
-                    {
-                        // We want to view all traces in development
-                        tracing.SetSampler(new AlwaysOnSampler());
-                    }
+                    var sourceName = Assembly.GetEntryAssembly()!.GetName().Name!;
 
-                    tracing.AddAspNetCoreInstrumentation()
+                    tracing
+                        .AddSource(sourceName)
+                        .SetSampler(new AlwaysOnSampler())
+                        .AddAspNetCoreInstrumentation()
                         .AddGrpcClientInstrumentation()
                         .AddHttpClientInstrumentation();
                 });
-            services.AddOpenTelemetryExporters(context.Configuration);    
+            services.AddOpenTelemetryExporters(context.Configuration);
         });
 
         builder.ConfigureServices((context, services) => {
@@ -51,7 +52,6 @@ public static class Extensions
             {
                 // Turn on resilience by default
                 http.AddStandardResilienceHandler();
-
                 // Turn on service discovery by default
                 http.UseServiceDiscovery();
             });
@@ -60,8 +60,6 @@ public static class Extensions
 
         return builder;
     }
-
-
 
     public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
     {
@@ -73,9 +71,8 @@ public static class Extensions
 
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
-            // Turn on resilience by default`
+            // Turn on resilience by default
             http.AddStandardResilienceHandler();
-
             // Turn on service discovery by default
             http.UseServiceDiscovery();
         });
@@ -104,7 +101,6 @@ public static class Extensions
                     // We want to view all traces in development
                     tracing.SetSampler(new AlwaysOnSampler());
                 }
-
                 tracing.AddAspNetCoreInstrumentation()
                        .AddGrpcClientInstrumentation()
                        .AddHttpClientInstrumentation();

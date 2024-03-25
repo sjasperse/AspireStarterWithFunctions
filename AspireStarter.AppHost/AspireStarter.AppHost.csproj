@@ -10,12 +10,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspireStarter.ApiService\AspireStarter.ApiService.csproj" />
-    <ProjectReference Include="..\AspireStarter.AppFunctions\AspireStarter.AppFunctions.csproj" />
     <ProjectReference Include="..\AspireStarter.Web\AspireStarter.Web.csproj" />
+    <ProjectReference Include="..\AspireStarter.FunctionApp\AspireStarter.FunctionApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.1.23557.2" />
+    <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.4.24156.9" />
   </ItemGroup>
 
 </Project>

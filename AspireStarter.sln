@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireStarter.ApiService", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireStarter.Web", "AspireStarter.Web\AspireStarter.Web.csproj", "{A14E27FB-65A5-4EA3-9504-FBFD555215EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireStarter.FunctionApp", "AspireStarter.FunctionApp\AspireStarter.FunctionApp.csproj", "{182F8D75-6B13-4A76-B7DF-BFAFB8DEB7FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireStarter.AppFunctions", "AspireStarter.AppFunctions\AspireStarter.AppFunctions.csproj", "{182F8D75-6B13-4A76-B7DF-BFAFB8DEB7FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

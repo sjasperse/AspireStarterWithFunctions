@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AspireStarter.ApiService\AspireStarter.ApiService.csproj" />
     <ProjectReference Include="..\AspireStarter.Web\AspireStarter.Web.csproj" />
-    <ProjectReference Include="..\AspireStarter.FunctionApp\AspireStarter.FunctionApp.csproj" />
+    <ProjectReference Include="..\AspireStarter.AppFunctions\AspireStarter.AppFunctions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

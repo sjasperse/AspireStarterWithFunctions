@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.Hosting;
 public static class Extensions
 {
     // added to support functions
-    public static IHostBuilder AddServiceDefaultsForFunctionApp(this IHostBuilder builder)
+    public static IHostBuilder AddServiceDefaults(this IHostBuilder builder)
     {
         // open telemetry
         builder.ConfigureLogging(x => {
